@@ -28,21 +28,21 @@ namespace :whenever do
   task :clear => :environment  do
     queue %{
       echo "-----> Clear crontab for #{whenever_name}"
-      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{bundle_bin} exec whenever --clear-crontab #{whenever_name} --set 'environment=#{rails_env}&path=#{deploy_to!}/#{current_path!}']}
+      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{bundle_prefix} whenever --clear-crontab #{whenever_name} --set 'environment=#{rails_env}&path=#{deploy_to!}/#{current_path!}']}
     }
   end
   desc "Update crontab"
   task :update => :environment do
     queue %{
       echo "-----> Update crontab for #{whenever_name}"
-      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{bundle_bin} exec whenever --update-crontab #{whenever_name} --set 'environment=#{rails_env}&path=#{deploy_to!}/#{current_path!}']}
+      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{bundle_prefix} whenever --update-crontab #{whenever_name} --set 'environment=#{rails_env}&path=#{deploy_to!}/#{current_path!}']}
     }
   end
   desc "Write crontab"
   task :write => :environment do
     queue %{
       echo "-----> Update crontab for #{whenever_name}"
-      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{bundle_bin} exec whenever --write-crontab #{whenever_name} --set 'environment=#{rails_env}&path=#{deploy_to!}/#{current_path!}']}
+      #{echo_cmd %[cd #{deploy_to!}/#{current_path!} ; #{bundle_prefix} whenever --write-crontab #{whenever_name} --set 'environment=#{rails_env}&path=#{deploy_to!}/#{current_path!}']}
     }
   end
 end
